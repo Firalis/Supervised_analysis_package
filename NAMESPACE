@@ -1,0 +1,1 @@
+export("ANOVA_Non_param", "normality", "student", "wilcox")
