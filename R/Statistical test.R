@@ -1,3 +1,4 @@
+#' @title wilcox
 #' @author Matthieu COQ
 #' Version: 1.0
 #' Date: 23-Aug-2018
@@ -12,6 +13,8 @@
 #' @param base base for your log transformation
 #' @param comparison name of your comparison that it will the title of your output
 #' @return the function give a csv file with a mean, the standard deviation, the p-value of a Wilcoxon test and the foldchange for all variable in your matrix or data frame
+#' @export
+
 
 wilcox <- function(start, end, group_1, group_2, log, base, comparison) {
 
@@ -73,6 +76,7 @@ wilcox <- function(start, end, group_1, group_2, log, base, comparison) {
 }
 
 
+#' @title student
 #' @author Matthieu COQ
 #' Version: 2.0
 #' Date: 03-Jun-21
@@ -87,6 +91,7 @@ wilcox <- function(start, end, group_1, group_2, log, base, comparison) {
 #' @param base base for your log transformation
 #' @param comparison name of your comparison that it will the title of your output
 #' @return the function give a csv file with a mean, the standard deviation, the p-value of a Student test and the foldchange for all variable in your matrix or data frame
+#' @export
 
 student <- function(start, end, group_1, group_2, log, base, comparison) {
 
@@ -131,7 +136,7 @@ student <- function(start, end, group_1, group_2, log, base, comparison) {
     pvalue <- c(
       variable <- colnames(group_2)[i], moygroup2 <- mean(group_2[, i], na.rm = TRUE),
       sdgroup2 <- sd(group_2[, i], na.rm = TRUE), moygroup1 <- mean(group_1[, i], na.rm = TRUE),
-      sdgroup1 <- sd(group_1[, i], na.rm = TRUE), pvalue <- student.test(group_1[, i], group_2[, i], na.rm = TRUE)$p.value
+      sdgroup1 <- sd(group_1[, i], na.rm = TRUE), pvalue <- t.test(group_1[, i], group_2[, i], na.rm = TRUE)$p.value
     )
     # Calculation of a foldchange depending f we do a log transformation or not
     foldchange <- NULL
@@ -147,7 +152,8 @@ student <- function(start, end, group_1, group_2, log, base, comparison) {
   return(test)
 }
 
-#' @author Matthieu COQ
+#'  @title  normality
+#'  @author Matthieu COQ
 #' Version: 2.0
 #' Date: 04-Jun-21
 #' Objective: the Objective is to test the normality of the data
@@ -158,7 +164,7 @@ student <- function(start, end, group_1, group_2, log, base, comparison) {
 #' @param dataX data frame or matrix for the Shapiro-Wilk test
 #' @param project name of your comparison that it will the title of your output
 #' @return the function give a csv file with p-value of the Shapiro-Wilk test for all variable in your matrix or data frame
-
+#' @export
 
 normality <- function(start, end, dataX, project) {
 
@@ -197,6 +203,7 @@ normality <- function(start, end, dataX, project) {
 }
 
 
+#' @title ANOVA_Non_param
 #' @author Matthieu COQ
 #' Version: 2.0
 #' Date: 04-Jun-21
@@ -209,7 +216,7 @@ normality <- function(start, end, dataX, project) {
 #' @param group Group for the comparison
 #' @param comparison name of your comparison that it will the title of your output
 #' @return the function give a csv file with p-value of the Kruskal Waliis test and the mean and SD for each group for all variable in your matrix or data frame
-
+#' @export
 
 ANOVA_Non_param <- function(start, end, dataX, group, comparison) {
   # test for the argument

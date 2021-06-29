@@ -42,7 +42,7 @@ function(start, end, group_1, group_2, log, base, comparison) {
     pvalue <- c(
       variable <- colnames(group_2)[i], moygroup2 <- mean(group_2[, i], na.rm = TRUE),
       sdgroup2 <- sd(group_2[, i], na.rm = TRUE), moygroup1 <- mean(group_1[, i], na.rm = TRUE),
-      sdgroup1 <- sd(group_1[, i], na.rm = TRUE), pvalue <- student.test(group_1[, i], group_2[, i], na.rm = TRUE)$p.value
+      sdgroup1 <- sd(group_1[, i], na.rm = TRUE), pvalue <- t.test(group_1[, i], group_2[, i], na.rm = TRUE)$p.value
     )
     # Calculation of a foldchange depending f we do a log transformation or not
     foldchange <- NULL
