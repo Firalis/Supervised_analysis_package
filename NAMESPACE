@@ -3,4 +3,5 @@
 export(ANOVA_Non_param)
 export(normality)
 export(student)
+export(student_fdr)
 export(wilcox)
