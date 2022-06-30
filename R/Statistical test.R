@@ -64,7 +64,7 @@ wilcox <- function(start, end, group_1, group_2, log, base, comparison) {
     # Calculation of a foldchange depending f we do a log transformation or not
     foldchange <- NULL
     if (log == TRUE) {
-      foldchange <- mean(base^group_1[, i], na.rm = TRUE) / mean(base^group_2[, i], na.rm = TRUE)
+      foldchange <- base^(mean(group1[,i],na.rm=T)-mean(group2[,i],na.rm=T))
     } else {
       foldchange <- mean(group_1[, i], na.rm = TRUE) / mean(group_2[, i], na.rm = TRUE)
     }
@@ -141,7 +141,7 @@ student <- function(start, end, group_1, group_2, log, base, comparison) {
     # Calculation of a foldchange depending f we do a log transformation or not
     foldchange <- NULL
     if (log == TRUE) {
-      foldchange <- mean(base^group_1[, i], na.rm = TRUE) / mean(base^group_2[, i], na.rm = TRUE)
+      foldchange <- base^(mean(group1[,i],na.rm=T)-mean(group2[,i],na.rm=T))
     } else {
       foldchange <- mean(group_1[, i], na.rm = TRUE) / mean(group_2[, i], na.rm = TRUE)
     }
@@ -325,7 +325,7 @@ student_fdr <- function(start, end, group_1, group_2, log, base, comparison) {
     # Calculation of a foldchange depending f we do a log transformation or not
     foldchange <- NULL
     if (log == TRUE) {
-      foldchange <- mean(base^group_1[, i], na.rm = TRUE) / mean(base^group_2[, i], na.rm = TRUE)
+      foldchange <- base^(mean(group1[,i],na.rm=T)-mean(group2[,i],na.rm=T))
     } else {
       foldchange <- mean(group_1[, i], na.rm = TRUE) / mean(group_2[, i], na.rm = TRUE)
     }
@@ -404,7 +404,7 @@ wilcox_fdr <- function(start, end, group_1, group_2, log, base, comparison) {
     # Calculation of a foldchange depending f we do a log transformation or not
     foldchange <- NULL
     if (log == TRUE) {
-      foldchange <- mean(base^group_1[, i], na.rm = TRUE) / mean(base^group_2[, i], na.rm = TRUE)
+      foldchange <- base^(mean(group1[,i],na.rm=T)-mean(group2[,i],na.rm=T))
     } else {
       foldchange <- mean(group_1[, i], na.rm = TRUE) / mean(group_2[, i], na.rm = TRUE)
     }
